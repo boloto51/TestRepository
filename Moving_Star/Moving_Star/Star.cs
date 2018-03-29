@@ -12,7 +12,7 @@ namespace Moving_Star
         private Random _rnd = new Random();
         private int _x, _y;
         private int _xmin = 0;
-        private int _ymin = 4;
+        private int _ymin = 3;
         private int _xmax = Console.BufferWidth <= 78 ? Console.BufferWidth : 78;
         private int _ymax = Console.BufferHeight < 23 ? Console.BufferHeight : 23;
         Print _prnt;
@@ -21,8 +21,8 @@ namespace Moving_Star
 
         public Star()
         {
-            _x = _rnd.Next(_xmin, _xmax);
-            _y = _rnd.Next(_ymin, _ymax);
+            _x = _rnd.Next(_xmin + 1, _xmax - 1);
+            _y = _rnd.Next(_ymin + 1, _ymax - 1);
             _prnt = new Print(_xmin, _xmax, _ymin, _ymax);
         }
 

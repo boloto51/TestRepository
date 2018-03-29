@@ -55,7 +55,7 @@ namespace Moving_Star
             Console.WriteLine("Console.BufferHeight = " + Console.BufferHeight);
             Console.Write("(_xmin = " + _xmin + "," + "_ymin = " + _ymin + ")    ");
             Console.WriteLine("(_xmax = " + _xmax + "," + "_ymax = " + _ymax + ")");
-            Console.WriteLine("_x = " + _x + "," + "_y = " + _y);
+            Console.WriteLine("_x = " + _x + "," + "_y = " + _y + "       q - exit");
         }
     }
 }

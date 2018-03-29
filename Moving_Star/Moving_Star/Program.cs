@@ -31,7 +31,7 @@ namespace Moving_Star
                         break;
                     case ConsoleKey.Q:
                         Environment.Exit(0);
-                        return;
+                        break;
                 }
                 Star.Move();
                 Star.Print();
