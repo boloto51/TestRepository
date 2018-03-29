@@ -22,7 +22,7 @@ namespace AutoMoving_Star
                     //функция 
                     Star.Move();
                     Star.Print();
-                    Thread.Sleep(100);
+                    Thread.Sleep(10);
                 } while (!Console.KeyAvailable);
                 //обработка события нажатия на клавишу
                 if (Console.ReadKey().Key == ConsoleKey.Q)
