@@ -30,8 +30,8 @@ namespace AutoMoving_Star_NoFlicker
             y = rnd.Next(ymin + 1, ymax - 1);
 
             // инициализация массивов для символов и строк внутри стены Wall
-            scrBufArr = new char[xmax, ymax];
-            screenBufferArray = new string[ymax];
+            scrBufArr = new char[xmax - xmin - 1, ymax - ymin - 1];
+            screenBufferArray = new string[ymax - ymin - 1];
 
             // инициализация объекта для отрисовки звезды
             printer = new Print(xmin, xmax, ymin, ymax);
@@ -58,25 +58,25 @@ namespace AutoMoving_Star_NoFlicker
             y = y + addY < ymax ? (y + addY > ymin ? y + addY : ymin + 1) : ymax - 1;
 
             // очищаем строки внутри стены
-            for (int iy = 0; iy <= ymax - 1; iy++)
+            for (int iy = 0; iy < ymax - ymin - 1; iy++)
             {
-                screenBufferArray[iy] = "";
+                screenBufferArray[iy] = null;
             }
 
             // заполняем массив символов новым положением звезды 
             // (остальные позиции курсора консоли пустые внутри стены)
-            for (int iy = ymin + 1; iy <= ymax - 1; iy++)
+            for (int iy = 0; iy < ymax - ymin - 1; iy++)
             {
-                for (int ix = xmin + 1; ix <= xmax - 1; ix++)
+                for (int ix = 0; ix < xmax - xmin - 1; ix++)
                 {
-                    scrBufArr[ix, iy] = ((ix == x) && (iy == y)) ? Convert.ToChar("*") : Convert.ToChar(" ");
+                    scrBufArr[ix, iy] = ((ix + xmin + 1 == x) && (iy + ymin + 1 == y)) ? Convert.ToChar("*") : Convert.ToChar(" ");
                 }
             }
 
             // преобразуем массивы символов внутри стены в массивы строк
-            for (int iy = ymin + 1; iy <= ymax - 1; iy++)
+            for (int iy = 0; iy < ymax - ymin - 1; iy++)
             {
-                for (int ix = xmin + 1; ix <= xmax - 1; ix++)
+                for (int ix = 0; ix < xmax - xmin - 1; ix++)
                 {
                     screenBufferArray[iy] += scrBufArr[ix, iy];
                 }

@@ -80,9 +80,9 @@ namespace AutoMoving_Star_NoFlicker
         public void Print_Star(string[] screenBufferArray)
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            for (int iy = ymin + 1; iy <= ymax - 1; iy++)
+            for (int iy = 0; iy < ymax - ymin - 1; iy++)
             {
-                Console.SetCursorPosition(xmin + 1, iy);
+                Console.SetCursorPosition(xmin + 1, iy + ymin + 1);
                 Console.Write(screenBufferArray[iy]);
             }
         }
