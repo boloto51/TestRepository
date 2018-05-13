@@ -14,7 +14,6 @@ namespace Centre_of_mass_02_Console
 
         static int x_centre, y_centre, m_sum;
 
-        //private int x, y;
         static private int xmin = 0;
         static private int ymin = 2;
         static private int xmax = Console.BufferWidth <= 20 ? Console.BufferWidth : 20;
@@ -23,6 +22,15 @@ namespace Centre_of_mass_02_Console
 
         static void Main(string[] args)
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Количество точек 10: Да - Enter; Нет - введите число");
+
+            string readline = Console.ReadLine();
+            if (readline != "")
+            {
+                numberOfPoints = Convert.ToInt32(readline);
+            }
+
             Console.Clear();
 
             PrintWall();

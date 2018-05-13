@@ -14,6 +14,17 @@ namespace Frontal_Dimetric_Projection
     {
         Graphics graph;
         int length,x_centre, y_centre;
+        Point beginOfCoord;
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // Оси
+            Pen pen_Axes = new Pen(Brushes.Black, 1);
+            //graph = pictureBox1.CreateGraphics();
+            graph.DrawLine(pen_Axes, beginOfCoord, new Point(pictureBox1.Width, y_centre));
+            graph.DrawLine(pen_Axes, beginOfCoord, new Point(x_centre, 0));
+            graph.DrawLine(pen_Axes, beginOfCoord, new Point(0, pictureBox1.Height));
+        }
 
         public Form1()
         {
@@ -21,6 +32,8 @@ namespace Frontal_Dimetric_Projection
             pictureBox1.BackColor = Color.White;
             x_centre = (int)(pictureBox1.Width / 2);
             y_centre = (int)(pictureBox1.Height / 2);
+            beginOfCoord = new Point(x_centre, y_centre);
+            graph = pictureBox1.CreateGraphics();
             //graph = pictureBox1.CreateGraphics();
             //graph.DrawLine(new Pen(Brushes.Black, 1),
             //    new Point((int)(pictureBox1.Width / 2), (int)(pictureBox1.Height / 2)),
@@ -37,9 +50,8 @@ namespace Frontal_Dimetric_Projection
         {
             length = Convert.ToInt32(tbLenght.Text);
 
-            graph = pictureBox1.CreateGraphics();
+            //graph = pictureBox1.CreateGraphics();
             graph.Clear(Color.White);
-            Point beginOfCoord = new Point(x_centre, y_centre);
             // Оси
             Pen pen_Axes = new Pen(Brushes.Black, 1);
             graph.DrawLine(pen_Axes, beginOfCoord, new Point(pictureBox1.Width, y_centre));
