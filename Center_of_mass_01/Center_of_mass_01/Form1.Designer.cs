@@ -47,7 +47,7 @@
             // 
             // btnGenerate
             // 
-            this.btnGenerate.Location = new System.Drawing.Point(13, 219);
+            this.btnGenerate.Location = new System.Drawing.Point(96, 219);
             this.btnGenerate.Name = "btnGenerate";
             this.btnGenerate.Size = new System.Drawing.Size(75, 23);
             this.btnGenerate.TabIndex = 1;
@@ -57,7 +57,7 @@
             // 
             // btnCentre
             // 
-            this.btnCentre.Location = new System.Drawing.Point(95, 219);
+            this.btnCentre.Location = new System.Drawing.Point(178, 219);
             this.btnCentre.Name = "btnCentre";
             this.btnCentre.Size = new System.Drawing.Size(75, 23);
             this.btnCentre.TabIndex = 2;
@@ -76,7 +76,8 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(176, 218);
+            this.btnClear.Enabled = false;
+            this.btnClear.Location = new System.Drawing.Point(259, 218);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
             this.btnClear.TabIndex = 4;

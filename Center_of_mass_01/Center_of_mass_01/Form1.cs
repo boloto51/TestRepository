@@ -2,6 +2,7 @@
 // https://stackoverflow.com/questions/8536958/how-to-add-a-line-to-a-multiline-textbox
 // http://life-prog.ru/2_7313_metodi-zalivki.html
 // https://msdn.microsoft.com/ru-ru/library/2t63kk0t(v=vs.110).aspx
+// http://www.programmersforum.ru/showthread.php?t=143879
 
 using System;
 using System.Collections.Generic;
@@ -29,11 +30,14 @@ namespace Center_of_mass_01
         public Form1()
         {
             InitializeComponent();
+            pictureBox1.BackColor = Color.White;
         }
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
             graph = pictureBox1.CreateGraphics();
+            graph.Clear(Color.White);
+            tbListPoints.Clear();
             //g.DrawLine(new Pen(Brushes.Red, 4), new Point(10, 10), new Point(100, 100));
             for (int i = 0; i < numberOfPoints; i++)
             {
