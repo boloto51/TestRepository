@@ -18,11 +18,11 @@ namespace Center_of_mass_01
 {
     public partial class Form1 : Form
     {
-        static int numberOfPoints = 10;
+        //static int numberOfPoints = 10;
+        int numberOfPoints;
         Random rnd = new Random();
-        int[] x = new int[numberOfPoints];
-        int[] y = new int[numberOfPoints];
-        int[] m = new int[numberOfPoints];
+        int[] x, y, m;
+
         int x_centre, y_centre;
         int m_sum;
         Graphics graph;
@@ -35,9 +35,14 @@ namespace Center_of_mass_01
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
+            numberOfPoints = Convert.ToInt32(tbNumberOfPoints.Text);
+            x = new int[numberOfPoints];
+            y = new int[numberOfPoints];
+            m = new int[numberOfPoints];
+
             graph = pictureBox1.CreateGraphics();
             graph.Clear(Color.White);
-            tbListPoints.Clear();
+            tbListOfPoints.Clear();
             //g.DrawLine(new Pen(Brushes.Red, 4), new Point(10, 10), new Point(100, 100));
             for (int i = 0; i < numberOfPoints; i++)
             {
@@ -45,7 +50,7 @@ namespace Center_of_mass_01
                 y[i] = rnd.Next(0, pictureBox1.Height);
                 m[i] = rnd.Next(21);
 
-                tbListPoints.Text += "x[" + i + "]=" + $"{x[i]}"
+                tbListOfPoints.Text += "x[" + i + "]=" + $"{x[i]}"
                     + "\ty[" + i + "]=" + $"{y[i]}"
                     + "\tm[" + i + "]=" + $"{m[i]}" + "\r\n";
 
@@ -60,7 +65,7 @@ namespace Center_of_mass_01
         private void btnClear_Click(object sender, EventArgs e)
         {
             pictureBox1.Image = null;
-            tbListPoints.Clear();
+            tbListOfPoints.Clear();
         }
 
         private void btnCentre_Click(object sender, EventArgs e)
@@ -78,7 +83,7 @@ namespace Center_of_mass_01
 
             x_centre = (int)(x_centre / m_sum);
             y_centre = (int)(y_centre / m_sum);
-            tbListPoints.Text += "x_cntr=" + $"{x_centre}"
+            tbListOfPoints.Text += "x_cntr=" + $"{x_centre}"
                 + "\ty_cntr=" + $"{y_centre}"
                 + "\tm_sum=" + $"{m_sum}" + "\r\n";
 

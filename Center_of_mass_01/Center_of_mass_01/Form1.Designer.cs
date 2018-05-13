@@ -31,8 +31,9 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnGenerate = new System.Windows.Forms.Button();
             this.btnCentre = new System.Windows.Forms.Button();
-            this.tbListPoints = new System.Windows.Forms.TextBox();
+            this.tbListOfPoints = new System.Windows.Forms.TextBox();
             this.btnClear = new System.Windows.Forms.Button();
+            this.tbNumberOfPoints = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,14 +66,14 @@
             this.btnCentre.UseVisualStyleBackColor = true;
             this.btnCentre.Click += new System.EventHandler(this.btnCentre_Click);
             // 
-            // tbListPoints
+            // tbListOfPoints
             // 
-            this.tbListPoints.Location = new System.Drawing.Point(219, 13);
-            this.tbListPoints.Multiline = true;
-            this.tbListPoints.Name = "tbListPoints";
-            this.tbListPoints.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbListPoints.Size = new System.Drawing.Size(200, 200);
-            this.tbListPoints.TabIndex = 3;
+            this.tbListOfPoints.Location = new System.Drawing.Point(219, 13);
+            this.tbListOfPoints.Multiline = true;
+            this.tbListOfPoints.Name = "tbListOfPoints";
+            this.tbListOfPoints.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbListOfPoints.Size = new System.Drawing.Size(200, 200);
+            this.tbListOfPoints.TabIndex = 3;
             // 
             // btnClear
             // 
@@ -85,13 +86,22 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
+            // tbNumberOfPoints
+            // 
+            this.tbNumberOfPoints.Location = new System.Drawing.Point(12, 221);
+            this.tbNumberOfPoints.Name = "tbNumberOfPoints";
+            this.tbNumberOfPoints.Size = new System.Drawing.Size(50, 20);
+            this.tbNumberOfPoints.TabIndex = 5;
+            this.tbNumberOfPoints.Text = "10";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(434, 262);
+            this.Controls.Add(this.tbNumberOfPoints);
             this.Controls.Add(this.btnClear);
-            this.Controls.Add(this.tbListPoints);
+            this.Controls.Add(this.tbListOfPoints);
             this.Controls.Add(this.btnCentre);
             this.Controls.Add(this.btnGenerate);
             this.Controls.Add(this.pictureBox1);
@@ -108,8 +118,9 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnGenerate;
         private System.Windows.Forms.Button btnCentre;
-        private System.Windows.Forms.TextBox tbListPoints;
+        private System.Windows.Forms.TextBox tbListOfPoints;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.TextBox tbNumberOfPoints;
     }
 }
 
