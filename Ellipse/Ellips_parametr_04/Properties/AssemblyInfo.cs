@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Управление общими сведениями о сборке осуществляется с помощью 
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("Ellips_parameter_03")]
+[assembly: AssemblyTitle("Ellips_parametr_04")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Ellips_parameter_03")]
+[assembly: AssemblyProduct("Ellips_parametr_04")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("5275f597-0fb0-40d5-b2fb-25197268afd6")]
+[assembly: Guid("8869dfe5-6941-487d-b523-35cef316bbba")]
 
 // Сведения о версии сборки состоят из следующих четырех значений:
 //

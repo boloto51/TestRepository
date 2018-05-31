@@ -91,7 +91,6 @@ namespace Ellips_parametr_03
                     new Point(x_centre + x2, y_centre - y2));
                 //textBox1.Text += "x=" + (int)(x_centre + x) + "\ty=" + (int)(y_centre - y) + "\tx2=" + (int)(x_centre + x2) + "\ty2=" + (int)(y_centre - y2) + "\r\n";
             }
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -127,8 +126,6 @@ namespace Ellips_parametr_03
                 }
                 System.Threading.Thread.Sleep(500);
             }
-
         }
-
     }
 }

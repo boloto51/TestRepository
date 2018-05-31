@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ellips_parametr_02", "Ellip
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ellips_parametr_03", "Ellips_parametr_03\Ellips_parametr_03.csproj", "{EE8D352A-8E5D-466B-AAE0-519A7339BF86}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ellips_parametr_04", "Ellips_parametr_04\Ellips_parametr_04.csproj", "{8869DFE5-6941-487D-B523-35CEF316BBBA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{EE8D352A-8E5D-466B-AAE0-519A7339BF86}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE8D352A-8E5D-466B-AAE0-519A7339BF86}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE8D352A-8E5D-466B-AAE0-519A7339BF86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8869DFE5-6941-487D-B523-35CEF316BBBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8869DFE5-6941-487D-B523-35CEF316BBBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8869DFE5-6941-487D-B523-35CEF316BBBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8869DFE5-6941-487D-B523-35CEF316BBBA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

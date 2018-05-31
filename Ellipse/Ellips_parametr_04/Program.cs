@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Ellips_parameter_03
+namespace Ellips_parametr_04
 {
     static class Program
     {

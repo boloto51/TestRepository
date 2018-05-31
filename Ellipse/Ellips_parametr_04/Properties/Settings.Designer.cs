@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Ellips_parameter_03.Properties
+namespace Ellips_parametr_04.Properties
 {
 
 
