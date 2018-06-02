@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RepeatPath_02.Properties
+namespace RepeatPath.Properties
 {
 
 

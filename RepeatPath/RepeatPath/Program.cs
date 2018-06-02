@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RepeatPath_02
+namespace RepeatPath
 {
     static class Program
     {

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Управление общими сведениями о сборке осуществляется с помощью 
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("PathInMemories_01")]
+[assembly: AssemblyTitle("RepeatPath_02")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("PathInMemories_01")]
+[assembly: AssemblyProduct("RepeatPath_02")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("11a2743b-6031-4feb-ae61-e3cb51e8c4b8")]
+[assembly: Guid("17723d95-2dea-4f0f-929b-29d84f52c4c5")]
 
 // Сведения о версии сборки состоят из следующих четырех значений:
 //

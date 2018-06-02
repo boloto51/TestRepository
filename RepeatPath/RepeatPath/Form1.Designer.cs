@@ -1,4 +1,4 @@
-﻿namespace RepeatPath_02
+﻿namespace RepeatPath
 {
     partial class Form1
     {
