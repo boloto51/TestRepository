@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepeatPath", "RepeatPath\Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepeatPath_02", "RepeatPath_02\RepeatPath_02.csproj", "{17723D95-2DEA-4F0F-929B-29D84F52C4C5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepeatPath_03", "RepeatPath_03\RepeatPath_03.csproj", "{DA694C7F-196C-4B9A-9F35-C4F2377C2BF3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{17723D95-2DEA-4F0F-929B-29D84F52C4C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17723D95-2DEA-4F0F-929B-29D84F52C4C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17723D95-2DEA-4F0F-929B-29D84F52C4C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA694C7F-196C-4B9A-9F35-C4F2377C2BF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA694C7F-196C-4B9A-9F35-C4F2377C2BF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA694C7F-196C-4B9A-9F35-C4F2377C2BF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA694C7F-196C-4B9A-9F35-C4F2377C2BF3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
