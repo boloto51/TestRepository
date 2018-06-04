@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Threading;
+using System.Windows.Forms;
 
 //https://dxdy.ru/post483569.html
 
@@ -15,231 +10,129 @@ namespace Ellips_parametr_04
 {
     public partial class Form1 : Form
     {
-        int x, y, x2, y2, a, b, x_centre, y_centre, i;
-        double delta_t = Math.PI / 50; // шаг отрисовки линий, составляющих эллипс
-        bool trigger = true; // триггер определяющий сжимается эллипс на анимации или расширяется
-        Pen pen_Ellipse, pen_Axes; // цвет эллипса и осей
-        Thread myThread; 
-        bool finish = false; // триггер выхода из анимации
-        int degree; // переменная для градусов наклона эллипса
-        Graphics graph; 
-        //int[,] A = new int[50, 50];
-        //int[,] RotateMatrix = new int[50, 50];
+        private const double DeltaT = Math.PI / 50; // шаг отрисовки линий, составляющих эллипс
+        private readonly Graphics _graph;
+        private readonly Pen _penAxes; // цвет эллипса и осей
+        private readonly Pen _penEllipse; // цвет эллипса и осей
+        private readonly int _xCentre;
+        private readonly int _yCentre;
+        private bool _finish; // триггер выхода из анимации
+        private Thread _myThread;
+        private bool _trigger = true; // триггер определяющий сжимается эллипс на анимации или расширяется
+        private int b;
+        private int degree; // переменная для градусов наклона эллипса
 
         public Form1()
         {
             InitializeComponent();
-            graph = pictureBox1.CreateGraphics();
-            x_centre = (int)(pictureBox1.Width / 2);
-            y_centre = (int)(pictureBox1.Height / 2);
-            pen_Ellipse = new Pen(Brushes.Lime, 1);
-            pen_Axes = new Pen(Brushes.Blue, 1);
-            a = (int)(pictureBox1.Width / 4); // большая ширина эллипса
-            b = (int)(pictureBox1.Height / 4);
-            //i = 5; // параметр для отрисовки numericUpDown1
-            //b = (int)(b * (10 - i) / 10); // малая ширина эллипса
+            _graph = pictureBox1.CreateGraphics();
+            _xCentre = pictureBox1.Width / 2;
+            _yCentre = pictureBox1.Height / 2;
+            _penEllipse = new Pen(Brushes.Lime, 1);
+            _penAxes = new Pen(Brushes.Blue, 1);
+            b = pictureBox1.Height / 4;
         }
 
         // Отрисовка 9 эллипсов с поворотом вокруг центра эллипса на 10 градусов
         private void button1_Click(object sender, EventArgs e)
         {
-            graph.Clear(Color.Black); // очистка поля
-            //textBox1.Text += "xMax=" + pictureBox1.Width + "\tyMax=" + pictureBox1.Height + "\r\n";
-            graph.DrawLine(pen_Axes, new Point(x_centre, 0),
-                    new Point(x_centre, pictureBox1.Height)); // отрисовка вертикальной оси
-            graph.DrawLine(pen_Axes, new Point(0, y_centre),
-                    new Point(pictureBox1.Width, y_centre)); // отрисовка горизонтальной оси
-
+            ClearGraph();
             // Отрисовка 9 эллипсов с поворотом вокруг центра эллипса на 10 градусов
-            for (int degree = 0; degree <= 90; degree += 10)
-            {
-                for (double t = 0; t <= 2 * Math.PI; t = t + delta_t)
-                {
-                    double radians = (double)(degree * Math.PI / 180); // из градусов в радианы
-
-                    x = (int)(a * Math.Cos(radians) * Math.Cos(t) - b * Math.Sin(radians) * Math.Sin(t));
-                    y = (int)(a * Math.Sin(radians) * Math.Cos(t) + b * Math.Cos(radians) * Math.Sin(t));
-                    x2 = (int)(a * Math.Cos(radians) * Math.Cos(t + delta_t) - b * Math.Sin(radians) * Math.Sin(t + delta_t));
-                    y2 = (int)(a * Math.Sin(radians) * Math.Cos(t + delta_t) + b * Math.Cos(radians) * Math.Sin(t + delta_t));
-                    graph.DrawLine(pen_Ellipse, new Point(x_centre + x, y_centre - y),
-                        new Point(x_centre + x2, y_centre - y2));
-                }
-            }
-        }
-
-        // поворот статического эллипса вокруг центра при изменении значения в numericUpDown1
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-            graph.Clear(Color.Black);
-
-            graph.DrawLine(pen_Axes, new Point(x_centre, 0),
-                new Point(x_centre, pictureBox1.Height));
-            graph.DrawLine(pen_Axes, new Point(0, y_centre),
-                    new Point(pictureBox1.Width, y_centre));
-            i = 5; // параметр для отрисовки numericUpDown1
-            b = (int)(b * (10 - i) / 10); // малая ширина эллипса
-
-            for (double t = 0; t <= 2 * Math.PI; t = t + delta_t)
-            {
-                double radians = (double)((int)(numericUpDown1.Value) * Math.PI / 180); // из градусов в радианы
-
-                x = (int)(a * Math.Cos(radians) * Math.Cos(t) - b * Math.Sin(radians) * Math.Sin(t));
-                y = (int)(a * Math.Sin(radians) * Math.Cos(t) + b * Math.Cos(radians) * Math.Sin(t));
-                x2 = (int)(a * Math.Cos(radians) * Math.Cos(t + delta_t) - b * Math.Sin(radians) * Math.Sin(t + delta_t));
-                y2 = (int)(a * Math.Sin(radians) * Math.Cos(t + delta_t) + b * Math.Cos(radians) * Math.Sin(t + delta_t));
-                graph.DrawLine(pen_Ellipse, new Point(x_centre + x, y_centre - y),
-                    new Point(x_centre + x2, y_centre - y2));
-                //textBox1.Text += "x=" + (int)(x_centre + x) + "\ty=" + (int)(y_centre - y) + "\tx2=" + (int)(x_centre + x2) + "\ty2=" + (int)(y_centre - y2) + "\r\n";
-            }
+            for (var degreeTemp = 0; degreeTemp <= 90; degreeTemp += 10)
+                DrawLineInCycle(degreeTemp);
         }
 
         // отрисовка 10 эллипсов разной ширины повернутых на заданный угол
         private void button2_Click(object sender, EventArgs e)
         {
-            graph.Clear(Color.Black);
-
-            // отрисовка осей
-            graph.DrawLine(pen_Axes, new Point(x_centre, 0),
-                    new Point(x_centre, pictureBox1.Height));
-            graph.DrawLine(pen_Axes, new Point(0, y_centre),
-                    new Point(pictureBox1.Width, y_centre));
-
-            a = (int)(pictureBox1.Width / 4);
-            b = (int)(pictureBox1.Height / 4);
-
+            ClearGraph();
+            b = pictureBox1.Height / 4;
             degree = 60; // угол поворота в градусах
-
             // отрисовка 10 эллипсов разной ширины повернутых на заданный угол
-            for (int j = 0; j <= 10; j++)
+            for (var j = 0; j <= 10; j++)
             {
-                //graph.Clear(Color.Black);
-
-                b = (int)(b * (10 - j) / 10);
-
-                for (double t = 0; t <= 2 * Math.PI; t = t + delta_t)
-                {
-                    double radians = (double)(degree * Math.PI / 180);
-
-                    x = (int)(a * Math.Cos(radians) * Math.Cos(t) - b * Math.Sin(radians) * Math.Sin(t));
-                    y = (int)(a * Math.Sin(radians) * Math.Cos(t) + b * Math.Cos(radians) * Math.Sin(t));
-                    x2 = (int)(a * Math.Cos(radians) * Math.Cos(t + delta_t) - b * Math.Sin(radians) * Math.Sin(t + delta_t));
-                    y2 = (int)(a * Math.Sin(radians) * Math.Cos(t + delta_t) + b * Math.Cos(radians) * Math.Sin(t + delta_t));
-                    graph.DrawLine(pen_Ellipse, new Point(x_centre + x, y_centre - y),
-                        new Point(x_centre + x2, y_centre - y2));
-                }
-                System.Threading.Thread.Sleep(500);
+                b = b * (10 - j) / 10;
+                DrawLineInCycle(degree);
+                Thread.Sleep(500);
             }
         }
 
         // анимация одного эллипса в потоке
         private void button3_Click(object sender, EventArgs e)
         {
-            if (myThread == null)
-            {
-                myThread = new Thread(new ThreadStart(DrawEllipse));
-                myThread.IsBackground = true;
-                myThread.Start();
-            }
+            if (_myThread != null) return;
+            _myThread = new Thread(DrawEllipse) {IsBackground = true};
+            _myThread.Start();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            finish = true;
-            if (myThread != null) // && myThread.ThreadState == ThreadState.Running
-            {
-                myThread.Join();
-            }
+            _finish = true;
+            _myThread?.Join();
         }
 
         // анимация одного эллипса
         private void DrawEllipse()
         {
-            while (finish != true) // пока триггер завершения не активен
+            while (!_finish) // пока триггер завершения не активен
             {
-                if (trigger == true)
-                {
-                    // отрисовка 10 раз уменьшающегося эллипса
-                    for (i = 0; i <= 10; i++)
-                    {
-                        graph.Clear(Color.Black);
-                        graph.DrawLine(pen_Axes, new Point(x_centre, 0),
-                            new Point(x_centre, pictureBox1.Height));
-                        graph.DrawLine(pen_Axes, new Point(0, y_centre), 
-                            new Point(pictureBox1.Width, y_centre));
+                DrawEllipseFor();
+                if (_finish) break;
+                _trigger = true;
+            }
+        }
 
-                        a = (int)(pictureBox1.Width / 4);
-                        b = (int)(pictureBox1.Height / 4);
-                        b = (int)(b * (10 - i) / 10);
-                        for (double t = 0; t < 2 * Math.PI; t = t + delta_t)
-                        {
-                            double radians = (double)((int)(numericUpDown1.Value) * Math.PI / 180); // из градусов в радианы
+        private void DrawEllipseFor()
+        {
+            var list = Enumerable.Range(0, 10).ToList();
+            if (!_trigger) list.Reverse();
+            foreach (var i in list)
+            {
+                ClearGraph();
+                b = pictureBox1.Height / 4 * (10 - i) / 10;
+                DrawLineInCycle((int) numericUpDown1.Value);
+                if (_finish) break;
+                Thread.Sleep(100);
+            }
+        }
 
-                            x = (int)(a * Math.Cos(radians) * Math.Cos(t) - b * Math.Sin(radians) * Math.Sin(t));
-                            y = (int)(a * Math.Sin(radians) * Math.Cos(t) + b * Math.Cos(radians) * Math.Sin(t));
-                            x2 = (int)(a * Math.Cos(radians) * Math.Cos(t + delta_t) - b * Math.Sin(radians) * Math.Sin(t + delta_t));
-                            y2 = (int)(a * Math.Sin(radians) * Math.Cos(t + delta_t) + b * Math.Cos(radians) * Math.Sin(t + delta_t));
-                            graph.DrawLine(pen_Ellipse, new Point(x_centre + x, y_centre - y),
-                                new Point(x_centre + x2, y_centre - y2));
+        private void ClearGraph()
+        {
+            _graph.Clear(Color.Black);
+            _graph.DrawLine(_penAxes, new Point(_xCentre, 0),
+                new Point(_xCentre, pictureBox1.Height));
+            _graph.DrawLine(_penAxes, new Point(0, _yCentre),
+                new Point(pictureBox1.Width, _yCentre));
+        }
 
-                            if (finish == true)
-                            {
-                                break;
-                            }
-                        }
-                        if (finish == true)
-                        {
-                            break;
-                        }
-                        System.Threading.Thread.Sleep(100);
-                    }
-                    if (finish == true)
-                    {
-                        break;
-                    }
-                    trigger = false;
-                }
-                if (trigger == false)
-                {
-                    // отрисовка 10 раз увеличивающегося эллипса
-                    for (i = 10; i >= 0; i--)
-                    {
-                        graph.Clear(Color.Black);
-                        graph.DrawLine(pen_Axes, new Point(x_centre, 0),
-                            new Point(x_centre, pictureBox1.Height));
-                        graph.DrawLine(pen_Axes, new Point(0, y_centre),
-                            new Point(pictureBox1.Width, y_centre));
+        private int GetMinus(double radians, double t, int b)
+        {
+            var a = pictureBox1.Width / 4;
+            return (int) (a * Math.Cos(radians) * Math.Cos(t) - b * Math.Sin(radians) * Math.Sin(t));
+        }
 
-                        a = (int)(pictureBox1.Width / 4);
-                        b = (int)(pictureBox1.Height / 4);
-                        b = (int)(b * (10 - i) / 10);
-                        for (double t = 0; t < 2 * Math.PI; t = t + delta_t)
-                        {
-                            double radians = (double)((int)(numericUpDown1.Value) * Math.PI / 180); // из градусов в радианы
+        private int GetPlus(double radians, double t, int b)
+        {
+            var a = pictureBox1.Width / 4;
+            return (int) (a * Math.Sin(radians) * Math.Cos(t) + b * Math.Cos(radians) * Math.Sin(t));
+        }
 
-                            x = (int)(a * Math.Cos(radians) * Math.Cos(t) - b * Math.Sin(radians) * Math.Sin(t));
-                            y = (int)(a * Math.Sin(radians) * Math.Cos(t) + b * Math.Cos(radians) * Math.Sin(t));
-                            x2 = (int)(a * Math.Cos(radians) * Math.Cos(t + delta_t) - b * Math.Sin(radians) * Math.Sin(t + delta_t));
-                            y2 = (int)(a * Math.Sin(radians) * Math.Cos(t + delta_t) + b * Math.Cos(radians) * Math.Sin(t + delta_t));
-                            graph.DrawLine(pen_Ellipse, new Point(x_centre + x, y_centre - y),
-                                new Point(x_centre + x2, y_centre - y2));
+        private Point GetLinePoint(double radians, double t, int b)
+        {
+            var x = GetMinus(radians, t, b);
+            var y = GetPlus(radians, t, b);
+            return new Point(_xCentre + x, _yCentre - y);
+        }
 
-                            if (finish == true)
-                            {
-                                break;
-                            }
-                        }
-                        if (finish == true)
-                        {
-                            break;
-                        }
-                        System.Threading.Thread.Sleep(100);
-                    }
-                    if (finish == true)
-                    {
-                        break;
-                    }
-                    trigger = true;
-                }
+        private void DrawLineInCycle(int degreeVal)
+        {
+            for (double t = 0; t <= 2 * Math.PI; t = t + DeltaT)
+            {
+                var radians = degreeVal * Math.PI / 180; // из градусов в радианы
+                var firstPoint = GetLinePoint(radians, t, b);
+                var secondPoint = GetLinePoint(radians, t + DeltaT, b);
+                _graph.DrawLine(_penEllipse, firstPoint, secondPoint);
+                if (_finish) break;
             }
         }
     }
