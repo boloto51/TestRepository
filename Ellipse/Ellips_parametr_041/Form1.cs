@@ -38,41 +38,28 @@ namespace Ellips_parametr_041
             //i = 5; // параметр для отрисовки numericUpDown1
             //b = (int)(b * (10 - i) / 10); // малая ширина эллипса
             axes = new DrawAxes(pictureBox1, graph, pen_Axes, x_centre, y_centre);
+            numericUpDown1.Maximum = 360;
         }
 
         // Отрисовка 9 эллипсов с поворотом вокруг центра эллипса на 10 градусов
         private void button1_Click(object sender, EventArgs e)
         {
-            EllipsRotate ElRot = new EllipsRotate(pictureBox1, graph, axes, 
-                x_centre, y_centre, pen_Ellipse, delta_t, a, b);
-            ElRot.Draw9Ellips(x, y, x2, y2);
+            EllipsRotate ellips9 = new EllipsRotate(pictureBox1, graph, axes, pen_Ellipse, delta_t);
+            ellips9.Draw9Ellips();
         }
 
-        // поворот статического эллипса вокруг центра при изменении значения в numericUpDown1
+        // Поворот эллипса вокруг центра при изменении значения в numericUpDown1
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            EllipsRotate ElRotOneDegree = new EllipsRotate(pictureBox1, graph, axes,
-                x_centre, y_centre, pen_Ellipse, delta_t, a, b);
-            ElRotOneDegree.DrawEllipsRotateOneDegree(numericUpDown1, x, y, x2, y2);
+            EllipsRotate ellips1rot = new EllipsRotate(pictureBox1, graph, axes, pen_Ellipse, delta_t);
+            ellips1rot.DrawEllipsRotate1Degree(numericUpDown1);
         }
 
         // отрисовка 10 эллипсов разной ширины повернутых на заданный угол
         private void button2_Click(object sender, EventArgs e)
         {
-            graph.Clear(Color.Black);
-            axes.DrawAxesLines(); // отрисовка осей
-            a = (int)(pictureBox1.Width / 4);
-            b = (int)(pictureBox1.Height / 4);
-            degree = 60; // угол поворота в градусах
-            DrawEllips ellipsResizeAngle = new DrawEllips(x_centre, y_centre, graph, pen_Ellipse, delta_t, a);
-
-            // отрисовка 10 эллипсов разной ширины повернутых на заданный угол
-            for (int j = 0; j <= 10; j++)
-            {
-                b = (int)(b * (10 - j) / 10);
-                ellipsResizeAngle.DrawEllipsByPointsBparam(degree, x, y, x2, y2, b);
-                System.Threading.Thread.Sleep(200);
-            }
+            EllipsRotate ellips10 = new EllipsRotate(pictureBox1, graph, axes, pen_Ellipse, delta_t);
+            ellips10.Draw10Ellips((int)numericUpDown1.Value);
         }
 
         // анимация одного эллипса в потоке
@@ -98,6 +85,8 @@ namespace Ellips_parametr_041
         // анимация одного эллипса
         private void DrawEllipse()
         {
+            //EllipsRotate ellipsAnima = new EllipsRotate(pictureBox1, graph, axes, pen_Ellipse, delta_t);
+
             while (finish != true) // пока триггер завершения не активен
             {
                 if (trigger == true)
