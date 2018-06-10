@@ -69,7 +69,7 @@ namespace Ellips_parametr_041
             ellipsAnimate.DrawAnimate(numericUpDown1, b);
         }
 
-        private void Clr_DrwAxs()
+        public void Clr_DrwAxs()
         {
             graph.Clear(Color.Black);
             axes.DrawAxesLines(); // отрисовка осей

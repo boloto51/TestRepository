@@ -86,6 +86,8 @@ namespace Ellips_parametr_041
         private void DrawEllipse()
         {
             //EllipsRotate ellipsAnima = new EllipsRotate(pictureBox1, graph, axes, pen_Ellipse, delta_t);
+            //b = (int)(pictureBox1.Height / 4);
+            //EllipsDrawing ellipsDrw = new EllipsDrawing(pictureBox1, graph, pen_Ellipse, delta_t, b);
 
             while (finish != true) // пока триггер завершения не активен
             {
@@ -94,15 +96,20 @@ namespace Ellips_parametr_041
                     // отрисовка 10 раз уменьшающегося эллипса
                     for (i = 0; i <= 10; i++)
                     {
+                        //ellipsAnima.Clr_DrwAxs();
+                        
                         graph.Clear(Color.Black);
                         graph.DrawLine(pen_Axes, new Point(x_centre, 0),
                             new Point(x_centre, pictureBox1.Height));
                         graph.DrawLine(pen_Axes, new Point(0, y_centre),
                             new Point(pictureBox1.Width, y_centre));
-
+                        
                         a = (int)(pictureBox1.Width / 4);
                         b = (int)(pictureBox1.Height / 4);
                         b = (int)(b * (10 - i) / 10);
+
+                        //ellipsDrw.DrawEllipsByPoints1Degree(numericUpDown1);
+                        
                         for (double t = 0; t < 2 * Math.PI; t = t + delta_t)
                         {
                             double radians = (double)((int)(numericUpDown1.Value) * Math.PI / 180); // из градусов в радианы
@@ -119,6 +126,7 @@ namespace Ellips_parametr_041
                                 break;
                             }
                         }
+                        
                         if (finish == true)
                         {
                             break;

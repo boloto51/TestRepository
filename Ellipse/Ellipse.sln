@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ellips_parametr_04", "Ellip
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ellips_parametr_041", "Ellips_parametr_041\Ellips_parametr_041.csproj", "{947AB95C-034E-409B-9792-11A3F5F9E0A3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ellips_parametr_042", "Ellips_parametr_042\Ellips_parametr_042.csproj", "{90FEDEC7-214A-4509-BE65-091FAF05E3B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ellips_parametr_043", "Ellips_parametr_043\Ellips_parametr_043.csproj", "{666C6BEA-5EBC-4067-9598-9EEF48412C04}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{947AB95C-034E-409B-9792-11A3F5F9E0A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{947AB95C-034E-409B-9792-11A3F5F9E0A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{947AB95C-034E-409B-9792-11A3F5F9E0A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90FEDEC7-214A-4509-BE65-091FAF05E3B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90FEDEC7-214A-4509-BE65-091FAF05E3B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90FEDEC7-214A-4509-BE65-091FAF05E3B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90FEDEC7-214A-4509-BE65-091FAF05E3B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{666C6BEA-5EBC-4067-9598-9EEF48412C04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{666C6BEA-5EBC-4067-9598-9EEF48412C04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{666C6BEA-5EBC-4067-9598-9EEF48412C04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{666C6BEA-5EBC-4067-9598-9EEF48412C04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
